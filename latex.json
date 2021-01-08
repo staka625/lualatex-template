@@ -1,0 +1,134 @@
+{
+	"document": {
+		"prefix": "document",
+		"body": [
+			"%lualatex-jaの設定",
+			"\\documentclass[${1:report},a4paper,titlepage]{jlreq}",
+			"\\usepackage{luatexja}",
+			"\\usepackage[hananoaji,match,scale=0.924865]{luatexja-preset}",
+			"\\usepackage[math-style=TeX,bold-style=ISO]{unicode-math}",
+			"\\usepackage{graphicx,xcolor}",
+			"\\usepackage{listings}",
+			"%\\usepackage{tikz}",
+			"%\\usepackage{circuitikz}",
+			"\\usepackage[top=20mm,bottom=20mm,right=20mm,left=20mm]{geometry}",
+			"%\\usepackage[top=20mm,bottom=20mm,right=15mm,left=25mm]{geometry}",
+			"\\usepackage[hang,small,bf]{caption}",
+			"\\usepackage[subrefformat=parens]{subcaption}",
+			"\\captionsetup{compatibility=false}",
+			"",
+			"%使用するフォントの指定",
+			"\\setmainfont{Latin Modern Roman}[",
+			"\tOpticalSize = 0,",
+			"\tSmallCapsFont = lmromancaps10-regular,",
+			"\tSlantedFont = lmromanslant10-regular,",
+			"\tFontFace = {sb}{n}{lmromandemi10-regular}",
+			"]",
+			"\\setsansfont{Source Sans Pro}[",
+    		"\tFontFace = {l}{n}{SourceSansPro-Light},",
+    		"\tBoldFont = SourceSansPro-Semibold",
+			"]",
+			"\\setmonofont{Source Code Pro}[Scale = 0.875]",
+			"",
+			"\\definecolor{keywordColor}{rgb}{0.50,0.00,0.33} %キーワード色(darkviolet)",
+			"\\definecolor{commentColor}{rgb}{0.25,0.50,0.37} %コメント色(green)",
+			"\\definecolor{stringColor}{rgb}{0.16,0.00,1.00} %文字色(blue)",
+			"\\lstset{",
+			"\tlanguage = ${2:[11]C++},",
+			"\tbackgroundcolor={\\color[gray]{.98}},",
+			"\tbreaklines = true,",
+			"\tbreakindent = 10pt,",
+			"\tbasicstyle = \\ttfamily\\footnotesize,",
+			"\tclassoffset = 0,",
+			"\tkeywordstyle={\\bfseries\\color{keywordColor}},",
+			"\tcommentstyle={\\color{commentColor}},",
+			"\tstringstyle={\\color{stringColor}},",
+			"\tframe = tBRl,",
+    		"\tframeround = tttt,",
+			"\tframesep = 5pt,",
+			"\tnumbers = left,",
+			"\tnumberstyle={\\ttfamily\\scriptsize},",
+			"\tstepnumber = 1,",
+			"\ttabsize = 2,",
+			"\tcaptionpos = t",
+			"}",
+			"\\renewcommand{\\thesection}{\\mdseries\\S \\arabic{section}}",
+			"\\renewcommand{\\thesubsection}{\\thesection.\\arabic{subsection}}",
+			"\\renewcommand{\\lstlistingname}{Program}",
+			"\\makeatletter",
+    		"\t\\AtBeginDocument{",
+    		"\t\\renewcommand*{\\thelstlisting}{\\arabic{section}.\\arabic{subsection}.\\arabic{lstlisting}}",
+    		"\t\\@addtoreset{lstlisting}{section}}",
+			"\\makeatother",
+			"\\begin{document}",
+			"\\title{${3}}",
+			"\\author{${4}}",
+			"\\date{${5:\\和暦\\today}}",
+			"\\maketitle",
+			"",
+			"$0",
+			"",
+			"\\end{document}"
+		],
+		"description": "set lualatex document template"
+	},
+	"Figure": {
+		"prefix": "figure",
+		"body": [
+			"\\begin{figure}[${1:hbp}]",
+			"\\centering",
+			"\\includegraphics[${2:width=\\linewidth}]{$3 \\label{fig:$4}}",
+			"\\caption{$5}",
+			"\\end{figure}"
+		],
+		"description": "set figure"
+	},
+	"Table": {
+		"prefix": "table",
+		"body": [
+			"\\begin{table}[${1:hbp}]",
+			"\\centering",
+			"\\caption{$2}",
+			"\\label{tabl:$3}}",
+			"\\begin{tabular}{$4}\\hline",
+			"$5",
+			"\\end{tabular}\\end{table}"
+		],
+		"description": "set table"
+	},
+	"Answer": {
+		"prefix": "answer",
+		"body": [
+			"\\quad□",
+		],
+		"description": "\\quad□"
+	},
+	"Lim": {
+		"prefix": "limit",
+		"body": [
+			"\\lim_{${1:x} \\to $2} $0",
+		],
+		"description": "set limit"
+	},
+	"Sum": {
+		"prefix": "sum",
+		"body": [
+			"\\sum_{${1:i} = ${2:0}}^{${3:n}} $0",
+		],
+		"description": "set limit"
+	},
+	"inline": {
+		"prefix": "inline",
+		"body": [
+			"$ $0 $",
+		],
+		"description": "set inline"
+	},
+	"displayinline": {
+		"prefix": "displayinline",
+		"body": [
+			"$ \\displaystyle $0 $",
+		],
+		"description": "set displaystyleinline"
+	},
+}
