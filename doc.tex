@@ -1,0 +1,107 @@
+%lualatex-jaの設定
+\documentclass[report,a4paper,titlepage]{jlreq}
+\usepackage{luatexja}
+\usepackage[hananoaji,match,scale=0.924865]{luatexja-preset}
+\usepackage[math-style=TeX,bold-style=ISO]{unicode-math}
+\usepackage{graphicx,xcolor}
+\usepackage{listings}
+%\usepackage{tikz}
+%\usepackage{circuitikz}
+\usepackage[top=20mm,bottom=20mm,right=20mm,left=20mm]{geometry}
+%\usepackage[top=20mm,bottom=20mm,right=15mm,left=25mm]{geometry}
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+
+%使用するフォントの指定
+\setmainfont{Latin Modern Roman}[
+    OpticalSize = 0,
+    SmallCapsFont = lmromancaps10-regular,
+    SlantedFont = lmromanslant10-regular,
+    FontFace = {sb}{n}{lmromandemi10-regular}
+]
+\setsansfont{Source Sans Pro}[
+    FontFace = {l}{n}{SourceSansPro-Light},
+    BoldFont = SourceSansPro-Semibold
+]
+\setmonofont{Source Code Pro}[Scale = 0.875]
+
+\definecolor{keywordColor}{rgb}{0.50,0.00,0.33} %キーワード色(darkviolet)
+\definecolor{commentColor}{rgb}{0.25,0.50,0.37} %コメント色(green)
+\definecolor{stringColor}{rgb}{0.16,0.00,1.00} %文字色(blue)
+\lstset{
+    language = [11]C++,
+    backgroundcolor={\color[gray]{.98}},
+    breaklines = true,
+    breakindent = 10pt,
+    basicstyle = \ttfamily\footnotesize,
+    classoffset = 0,
+    keywordstyle={\bfseries\color{keywordColor}},
+    commentstyle={\color{commentColor}},
+    stringstyle={\color{stringColor}},
+    frame = tBRl,
+    frameround = tttt,
+    framesep = 5pt,
+    numbers = left,
+    numberstyle={\ttfamily\scriptsize},
+    stepnumber = 1,
+    tabsize = 2,
+    captionpos = t
+}
+\renewcommand{\thesection}{\mdseries\S \arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\lstlistingname}{Program}
+\makeatletter
+    \AtBeginDocument{
+    \renewcommand*{\thelstlisting}{\arabic{section}.\arabic{subsection}.\arabic{lstlisting}}
+    \@addtoreset{lstlisting}{section}}
+\makeatother
+\begin{document}
+\title{Lua\LaTeX のテスト}
+\author{へのへのもへじ}
+\date{\和暦\today}
+\maketitle
+
+\chapter{Hello,Lua\LaTeX !}
+\section{文字}
+\subsection{英語の文章}
+\noindent
+Once you stop learning, you start dying. --- Albert Einstein(1879-1955)\\
+\textsf{A man is but the product of his thoughts. What he thinks, he becomes.
+    ---　Mahatma Gandhi(1869-1948)}
+\subsection{日本語の文章}
+\noindent
+妖怪が鍛えたこの楼観剣に、斬れぬものなど、あんまり無い！\\
+{\sffamily 僕と契約して魔法少女になってよ！}\\
+
+\section{ソースコード}
+\subsection{AtCoderの回答例}
+\begin{lstlisting}[caption = ABC187 C問題回答例(C++)]
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(void) {
+	int n;
+	cin >> n;
+	map<string, int> m;
+	vector<string> S(n);
+	for(int i = 0; i < n, i++) {
+		str s;
+		cin >> s;
+		m[s]++;
+		if(s.front() != '!') {
+			S.push_back(s);
+		}
+	}
+	for(str& s : S) {
+		if(0 < m["!" + s] && 0 < m[s]) {
+			cout << s << endl;
+			return 0;
+		}
+	}
+	cout << "satisfiable" << endl;
+	return 0;
+}
+\end{lstlisting}
+
+\end{document}
