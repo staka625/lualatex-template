@@ -101,7 +101,7 @@
 		"body": [
 			"\\quad□",
 		],
-		"description": "\\quad□"
+		"description": "qed/answer"
 	},
 	"Lim": {
 		"prefix": "limit",
@@ -115,7 +115,7 @@
 		"body": [
 			"\\sum_{${1:i} = ${2:0}}^{${3:n}} $0",
 		],
-		"description": "set limit"
+		"description": "set sum"
 	},
 	"inline": {
 		"prefix": "inline",
