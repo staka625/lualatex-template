@@ -1,0 +1,67 @@
+%lualatex-jaの設定
+\documentclass[article,a4paper,titlepage]{jlreq}
+\usepackage{luatexja}
+\usepackage[haranoaji,match,scale=0.924865]{luatexja-preset}
+\usepackage[math-style=TeX,bold-style=ISO]{unicode-math}
+\usepackage{graphicx,xcolor}
+\usepackage{listings}
+%\usepackage{tikz}
+%\usepackage{circuitikz}
+\usepackage[top=20mm,bottom=20mm,right=20mm,left=20mm]{geometry}
+%\usepackage[top=20mm,bottom=20mm,right=15mm,left=25mm]{geometry}
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+
+%使用するフォントの指定
+\setmainfont{Latin Modern Roman}[
+    OpticalSize = 0,
+    SmallCapsFont = lmromancaps10-regular,
+    SlantedFont = lmromanslant10-regular,
+    FontFace = {sb}{n}{lmromandemi10-regular}
+]
+\setsansfont{Source Sans Pro}[
+    FontFace = {l}{n}{SourceSansPro-Light},
+    BoldFont = SourceSansPro-Semibold
+]
+\setmonofont{Source Code Pro}[Scale = 0.875]
+
+\definecolor{keywordColor}{rgb}{0.50,0.00,0.33} %キーワード色(darkviolet)
+\definecolor{commentColor}{rgb}{0.25,0.50,0.37} %コメント色(green)
+\definecolor{stringColor}{rgb}{0.16,0.00,1.00} %文字色(blue)
+\lstset{
+    language = [11]C++,
+    backgroundcolor={\color[gray]{.98}},
+    breaklines = true,
+    breakindent = 10pt,
+    basicstyle = \ttfamily\footnotesize,
+    classoffset = 0,
+    keywordstyle={\bfseries\color{keywordColor}},
+    commentstyle={\color{commentColor}},
+    stringstyle={\color{stringColor}},
+    frame = tBRl,
+    frameround = tttt,
+    framesep = 5pt,
+    numbers = left,
+    numberstyle={\ttfamily\scriptsize},
+    stepnumber = 1,
+    tabsize = 2,
+    captionpos = t
+}
+\renewcommand{\thesection}{\mdseries\S \arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\lstlistingname}{Program}
+\makeatletter
+    \AtBeginDocument{
+    \renewcommand*{\thelstlisting}{\arabic{section}.\arabic{subsection}.\arabic{lstlisting}}
+    \@addtoreset{lstlisting}{section}}
+\makeatother
+\begin{document}
+\title{}
+\author{}
+\date{\和暦\today}
+\maketitle
+
+
+
+\end{document}
